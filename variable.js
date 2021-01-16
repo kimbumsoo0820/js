@@ -23,3 +23,5 @@ const gSymbol2 = Symbol.for('id');
 console.log(gSymbol1 === gSymbol2); // true
 
 
+const kbs = { name: 'kimbumsoo', age: 25 };
+kbs.age = 23;
