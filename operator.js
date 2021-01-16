@@ -18,3 +18,42 @@ function check() {
 }
 
 // == 와 === 의 차이점 : == 은 숫자5 나 문자열 5 둘다 같다고 인식, ===는 다르다고 인식
+
+// console.log(name === 'kbs' ? 'yes' : 'no'); // 삼항연산자 ~!!!!!!
+const age = 25;
+const today = 'sunny';
+const name = '김범수';
+const a = 'today is';
+
+
+console.log(`${a}` + name === '김범수' ? age === 23 ? 'Cloudy' : today === 'saturday' ? 'saturday' : 'Monday' : 'Sunny');
+
+
+
+
+const browser = 'IE';
+
+switch (browser) {
+    case 'IE':
+        console.log('go away!');
+        break;
+    case 'Chrome':
+    case 'Firefox':
+        console.log('Love U');
+        break;
+    default:
+        console.log('same all');
+        break;
+}
+
+
+let i = 3;
+while (i > 0) {
+    console.log(`${i}`);
+    i--;
+}
+
+do {
+    console.log(`do while: ${i}`);
+    i--;
+} while (i > 0);
