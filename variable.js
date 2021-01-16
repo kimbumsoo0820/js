@@ -21,3 +21,5 @@ console.log(symbol1 === symbol2); // false
 const gSymbol1 = Symbol.for('id');
 const gSymbol2 = Symbol.for('id');
 console.log(gSymbol1 === gSymbol2); // true
+
+
