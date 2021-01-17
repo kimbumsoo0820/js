@@ -74,6 +74,84 @@ function printAll(...args) { // 배열로 값을 받는다 !!!!!!!!!
     for (let i = 0; i < args.length; i++) {
         console.log(args[i]);
     }
+
+    for (const arg of args) { // 파이썬의 in 같은 개념인듯. of 를 이용하면 하나씩 대입됨
+        console.log(arg);
+    }
+
+}
+printAll('dream', 'coding', 'kbs');
+
+
+
+function upgradeUser(user) { // 예를들어 사용자의 포인트가 일정값 이상일때 무언가를 실행하도록 하지 말고 얼마 이히알때 바로 리턴해 버리도록 하여
+    // 효율을 높여야 잔소리 안듣는다.  이것은 틀린 예
+    if (user.poit > 10) {
+        // something 
+    }
 }
 
-printAll('dream', 'coding', 'kbs');
+function upgradeUser(user) { // 이것이 정답 예시   값이 아닌경우 먼저 나와주는게 좋다
+    if (user.point <= 10) {
+        return;
+    }
+    // 여기에 무언가를 입력!!!
+}
+
+
+const print = function () { // 이런식으로 변수에 함수를 담을수 도 있다.
+    console.log('helllllo');
+}
+
+print();
+
+
+function randomQuiz(answer, printYes, printNo) {
+    if (answer === 'love u') {
+        printYes();
+    } else {
+        printNo();
+    }
+}
+
+// anonymous function
+const printYes = function () {
+    console.log('yes');
+};
+
+//named function
+const printNo = function print() { // 함수 안에서 함수를 호출할 수 도 있음
+    console.log('no');
+};
+
+randomQuiz('wrong', printYes, printNo);
+randomQuiz('love u', printYes, printNo);
+
+
+// Arrow function
+//always anonymous
+const simplePrint = function () {
+    console.log('simple');
+};
+
+// 위의 functinn 을 간편하게 변경  애로우 펑션
+const simplePrint = () => console.log('simple');
+
+const add = (a, b) => a + b;
+
+const simpleMultiply = (a, b) => { // 함수 안이 여러줄 인 경우
+    //do something
+    return a * b;
+};
+
+// 함수를 선언하면서 동시에 함수를 실행시키는 IIFE 
+(function hello() {
+    console.log('IIFE');
+})();
+
+//quiz
+function calculate(command, a, b) {
+    if (command === 'add') {
+        result = a + b;
+    }
+}
