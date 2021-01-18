@@ -1,3 +1,4 @@
+'user strict'
 const name = 'kbs';
 const age = 4;
 print(name, age);
