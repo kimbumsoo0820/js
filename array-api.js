@@ -47,31 +47,76 @@ const students = [
 
 // Q5. find a student with the score 90
 {
+    const result = students.find(function (student, index) {
+        return student.score === 90;
+    });
+    console.log(result);
 }
 
 // Q6. make an array of enrolled students
 {
+    const result = students.filter(function (student, index) {
+        return student.enrolled === true;
+    });
+    console.log(result);
 }
 
 // Q7. make an array containing only the students' scores
 // result should be: [45, 80, 90, 66, 88]
 {
+    const result = students.map(function (student, index) {
+        return student.score;
+    });
+    console.log(result);
 }
 
 // Q8. check if there is a student with the score lower than 50
 {
+    const result = students.filter(function (student, index) {
+        return student.score < 50;
+    });
+    console.log(result);
+
+    // 다른방법 결과 : true
+    const result2 = students.some((student) => student.score < 50);
+    console.log(result2);
 }
 
 // Q9. compute students' average score
 {
+    // 나의 풀이
+    let sum = 0;
+    const result = students.map(function (student) {
+        return student.score;
+    });
+    for (i of result) {
+        sum += i;
+    }
+    real = sum / result.length;
+    console.log(real);
+
+    // 배열 api 이용
+    const result2 = students.reduce((prev, curr) => prev + curr.score, 0);
+    console.log(result2 / students.length);
 }
 
 // Q10. make a string containing all the scores
 // result should be: '45, 80, 90, 66, 88'
 {
+    const result = students
+        .map((student) => student.score)
+        .filter((score) => score >= 50)
+        .join();
+    console.log(result);
 }
 
 // Bonus! do Q10 sorted in ascending order
 // result should be: '45, 66, 80, 88, 90'
 {
+    const result = students
+        .map((student) => student.score)
+        .sort((a, b) => a - b) // 이렇게 하면 작은수 부터 나열되고 큰 수부터 나열되게 하고 싶으면 a-b 를 b-a 로 바꿈.
+        .join();
+    console.log(result);
+
 }
