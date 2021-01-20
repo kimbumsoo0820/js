@@ -33,6 +33,17 @@ json = JSON.stringify(rabbit, (key, value) => {
     return key === 'name' ? 'kbs' : value;
 });
 console.log(json);
+console.log('-------------------------------------');
 
 // 2. JSON to Object
+json = JSON.stringify(rabbit);
+const obj = JSON.parse(json, (key, value) => {
+    console.log(`key: ${key}, value: ${value}`);
+    return key === 'birthDate' ? new Date(value) : value;
+});
 
+console.log(obj);
+rabbit.jump();
+// obj.jump();
+console.log(rabbit.birthDate.getDate());
+console.log(obj.birthDate.getDate());
