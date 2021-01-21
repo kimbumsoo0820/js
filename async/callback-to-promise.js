@@ -6,7 +6,7 @@
 
 class UserStorage {
     loginUser(id, password) {
-        return new Promise(resolve, reject) => {
+        return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (
                     (id === 'kbs' && password === 'dream') ||
@@ -17,7 +17,7 @@ class UserStorage {
                     reject(new Error('not found'));
                 }
             }, 2000);
-        };
+        });
 
     }
     getRoles(user) {
@@ -36,15 +36,13 @@ class UserStorage {
 }
 
 
-
-
 // 문제 
 const userStorage = new UserStorage();
 const id = prompt('enter ur id');
 const password = prompt('enter ur password');
 
 userStorage.loginUser(id, password)
-    .then(user => userStorage.getRoles)
-    .then(user => alert(`hello ${user.name}, you have a ${user.role} role`))
+    .then(user => userStorage.getRoles(user))
+    .then(user => alert(`Hello ${user.name}, you have a ${user.role} role`))
     .catch(console.log);
 
