@@ -3,7 +3,7 @@
 // 1. async
 async function fetchUser() { // async 쓰면 함수 안의 내용들을 자동적으로 Promise 로 바꿔줌.
     //do network request in 10 secs....
-    resolve('kbs');
+    return ('kbs');
 }
 
 // 만약 함수가 10초 걸리는 함수라면 사용자는 10초동안 백지 화면을 보게 되기 때문에 비동기 코드가 필요 -> Promise
@@ -17,12 +17,12 @@ function delay(ms) {
 }
 
 async function getApple() {
-    await delay(3000);
+    await delay(1000);
     return '사과';
 }
 
 async function getBanana() {
-    await delay(3000);
+    await delay(1000);
     return '바나나';
 }
 
@@ -34,3 +34,26 @@ function getBanana() {
 }
 */
 
+async function pickFruits() {
+    const applePromise = getApple();
+    const bananaPromise = getBanana(); // promise 는 만들면서 바로 실행되기 때문에 
+    const apple = await applePromise;
+    const banana = await bananaPromise;
+    return `${apple} + ${banana}`;
+}
+
+pickFruits().then(console.log);
+
+// 3. userful Promise APIs
+function pickAllFruits() {
+    return Promise.all([getApple(), getBanana()])
+        .then(fruits => fruits.join('+'));
+}
+pickAllFruits().then(console.log);
+
+
+function pickOnlyOne() {
+    return Promise.race([getApple(), getBanana()]);
+}
+
+pickOnlyOne().then(console.log);
